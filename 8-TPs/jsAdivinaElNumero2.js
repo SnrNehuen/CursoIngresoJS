@@ -9,20 +9,91 @@
 Desde  6 Intentos hasta 10:”falta técnica”
 Más de 10 intentos: “afortunado en el amor!!”.*/
 
-var numeroSecreto; 
-var contadorIntentos;
+var logica=angular.module("AdivinaElNumero2",[]);
 
-function comenzar()
+logica.controller("controlador", function($scope)
 {
-	//Genero el número RANDOM entre 1 y 100
-	 
-	
+	$scope.numeroSecreto=Math.floor((Math.random() * 3) + 1);
+	$scope.form={};
+	$scope.intentos=0;
+	$scope.estado="Buena suerte!";
 
-}
+	$scope.comenzar=function()
+	{
 
-function verificar()
-{
-	
-	
+		$scope.numeroSecreto=Math.floor((Math.random() * 3) + 1);
+		$scope.estado="Buena suerte!";
+		$scope.intentos=0;
 
-}
+	}
+
+	$scope.Verificar=function(){
+
+		if ($scope.form.numero == $scope.numeroSecreto)
+		{
+			$scope.estado="Correcto! "+$scope.numeroSecreto;
+
+			if ($scope.intentos == 0)
+			{
+
+				$scope.estado=$scope.estado+" usted es un Psíquico";
+			
+			};
+
+			if ($scope.intentos == 1)
+			{
+
+				$scope.estado=$scope.estado+" excelente percepción";
+			
+			};
+
+			if ($scope.intentos == 2)
+			{
+
+				$scope.estado=$scope.estado+" Esto es suerte";
+			
+			};
+
+			if ($scope.intentos == 3)
+			{
+
+				$scope.estado=$scope.estado+" Excelente técnica";
+			
+			};
+
+			if ($scope.intentos == 4)
+			{
+
+				$scope.estado=$scope.estado+" usted está en la media";
+			
+			};		
+
+			if ($scope.intentos > 4 && $scope.intentos < 11)
+			{
+
+				$scope.estado=$scope.estado+" falta técnica";
+			
+			};
+
+			if ($scope.intentos > 11)
+			{
+				$scope.estado=$scope.estado+" afortunado en el amor!!";
+			};									
+
+		};
+
+		if ($scope.form.numero > $scope.numeroSecreto)
+		{
+			$scope.estado="Se pasó...";
+			$scope.intentos=$scope.intentos+1;
+		};
+
+		if ($scope.form.numero < $scope.numeroSecreto)
+		{
+			$scope.estado="Falta...";
+			$scope.intentos=$scope.intentos+1;
+		};
+
+	}
+
+});
