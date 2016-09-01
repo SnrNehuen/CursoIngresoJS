@@ -10,33 +10,34 @@
 		<!--final de Estilos-->
 
 		<!--Lógica-Programación-->
+		<script SRC="bower_components/angular/angular.min.js" TYPE="text/javascript"></script>
 		<script type="text/javascript" src="jsFerreteIluminacion.js"></script>
         <!--Final de Lógica-Programación -->
 		
 
 		</head>
-	<body>
+	<body ng-app="FerreteIluminacion" ng-controller="controlador">
 		<div class="CajaUno animated bounceInDown">
 			
 		
 			<form id="FormIngreso">
 
-				<input type="text"  placeholder="Cantidad de lámparas" id="Cantidad">
-				<SELECT id="Marca">
-					<OPTION >ArgentinaLuz</OPTION>
-					<OPTION >FelipeLamparas</OPTION>
-					<OPTION >JeLuz</OPTION>
-					<OPTION >HazIluminacion</OPTION>
-					<OPTION >Osram</OPTION>
+				<input type="text"  placeholder="Cantidad de lámparas" ng-model="form.cantidad" id="Cantidad">
+				<SELECT name="singleSelect" ng-model="form.seleccion">
+					<OPTION value=1>ArgentinaLuz</OPTION>
+					<OPTION value=2>FelipeLamparas</OPTION>
+					<OPTION value=3>JeLuz</OPTION>
+					<OPTION value=4>HazIluminacion</OPTION>
+					<OPTION value=5>Osram</OPTION>
 				</SELECT>
-					<input type="text" readonly placeholder="Precio con descuento" id="precioDescuento">
+					<input type="text" readonly placeholder="Precio con descuento" ng-model="resultado" id="precioDescuento">
 			</form>
 			
 		</div>
 		<div class="CajaUno animated bounceInLeft">
 			
 			
-			<button  class="MiBotonUTN" onclick="CalcularPrecio()" >Calcular precio</button>
+			<button  class="MiBotonUTN" ng-click="CalcularPrecio()" >Calcular precio</button>
 			
 
 		</div>
