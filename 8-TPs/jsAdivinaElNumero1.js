@@ -10,23 +10,39 @@ de no ser igual se debe informar si “falta…”  para llegar al número secre
 var miaplicacion=angular.module("adivinaelnumero1",[]);
 
 miaplicacion.controller("controladorabb1",function($scope){
-	$scope.test="hola mundo";
+
 	$scope.numeroSecreto=Math.floor((Math.random() * 3) + 1);
 	$scope.form={};
 	$scope.intentos=0;
+	$scope.estado="Buena suerte!";
+
+	$scope.comenzar=function()
+	{
+
+		$scope.numeroSecreto=Math.floor((Math.random() * 3) + 1);
+		$scope.estado="Buena suerte!";
+		$scope.intentos=0;
+
+	}
 
 	$scope.Verificar=function(){
 
-		if ($scope.form.numero == $scope.numeroSecreto) {
-			console.log("el numero es igual: ");
-			console.log($scope.numeroSecreto);
-		}
-		else
+		if ($scope.form.numero == $scope.numeroSecreto)
 		{
-			console.log("los numeros son distintos");
+			$scope.estado="Correcto! "+$scope.numeroSecreto;
+		};
+
+		if ($scope.form.numero > $scope.numeroSecreto)
+		{
+			$scope.estado="Se pasó...";
 			$scope.intentos=$scope.intentos+1;
-		}
-		;
+		};
+
+		if ($scope.form.numero < $scope.numeroSecreto)
+		{
+			$scope.estado="Falta...";
+			$scope.intentos=$scope.intentos+1;
+		};
 
 	}
 });

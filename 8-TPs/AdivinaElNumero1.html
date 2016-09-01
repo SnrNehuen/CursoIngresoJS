@@ -27,6 +27,8 @@
 				
 				<br>
 				<input type="text"  placeholder="intentos" ng-model="intentos" readonly id="intentos">
+				<br>
+				<input type="text"  placeholder="estado" ng-model="estado" readonly id="estado">
 			</form>
 			
 		</div>
@@ -34,7 +36,7 @@
 			
 		<button style="height:5em;"  class="MiBotonUTN"  ng-click="Verificar()" >Verificar</button>
 			
-			<button  class="MiBotonUTN" onclick="comenzar()" >Comenzar</button>
+			<button  class="MiBotonUTN" ng-click="comenzar()" >Comenzar</button>
 
 		</div>
 
